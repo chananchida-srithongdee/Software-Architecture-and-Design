@@ -1,4 +1,5 @@
 package creational;
+
 public class TestData {
     public static final Book sailboatBook = new Book("9780078022159",
             "Database System Concepts",
