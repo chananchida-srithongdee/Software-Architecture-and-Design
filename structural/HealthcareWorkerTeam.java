@@ -1,11 +1,43 @@
-public class HealthcareWorkerTeam {
-    // Implement this file, and don't modify any other files.
+package edu.parinya.softarchdesign.structural;
 
-    /*
-     * Your tasks for this assignment require you to implement the following file:
-    HealthcareWorkerTeam.java - a container class for the Composite Pattern.
+import edu.parinya.softarchdesign.structural.HealthcareServiceable;
+import edu.parinya.softarchdesign.structural.HealthcareWorker;
 
-    Your task involves Composite Pattern. Please look at HealthcareWorker.svg and create HealthcareWorkerTeam.java accordingly. 
-    You may look at Main.java to see the expected usages.
-     */
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public  class HealthcareWorkerTeam  implements HealthcareServiceable {
+
+    protected List<HealthcareServiceable> members = new ArrayList<>();
+    public HealthcareWorkerTeam() {
+        this.members =  new ArrayList<>();
+    }
+
+    public void addMember(HealthcareServiceable component){
+        this.members.add(component);
+    }
+
+    public void removeMember(HealthcareServiceable  component){
+        this.members.remove(component);
+    }
+
+    @Override
+    public void service() {
+        for ( int i = 0; i<this.members.size();i++){
+            this.members.get(i).service();
+        }
+    }
+
+    @Override
+    public double getPrice() {
+        int price = 0;
+        for ( int i = 0; i<this.members.size();i++){
+            price+= this.members.get(i).getPrice();
+        }
+        return price;
+    }
+
+
 }
